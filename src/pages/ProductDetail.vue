@@ -19,7 +19,7 @@
 			<div class="productName">{{productInfo.productName}}</div>
 			<div class="subtitle">{{productInfo.subtitle}}</div>
 			<div style="padding-bottom: 5px;"><span style="font-size: 14px;color: #f40;">￥</span><span style="font-size: 18px;color: #f40;">{{productInfo.memberPrice|formatMoney}}</span></div>
-			<div style="border-top: 1px solid #e8e8e8;height: 36px;"><span style="color: #666;line-height: 36px;">库存：</span><span style="color: #333;">{{productInfo.StockNumber}}件</span></div>
+			<!-- <div style="border-top: 1px solid #e8e8e8;height: 36px;"><span style="color: #666;line-height: 36px;">库存：</span><span style="color: #333;">{{productInfo.StockNumber}}件</span></div> -->
 		</div>
 		<div style="margin-top: 10px;background: #fff;padding: 0 10px;">
 			<p style="height: 45px;line-height: 45px;">图文详情

@@ -4,6 +4,8 @@ import Router from 'vue-router'
 const Home = resolve =>require(['@/pages/Home'], resolve);
 const Shoppingcar = resolve =>require(['@/pages/Shoppingcar'], resolve);
 const ProductDetail = resolve =>require(['@/pages/ProductDetail'], resolve);
+const Mine = resolve =>require(['@/pages/Mine'], resolve);
+const Order = resolve =>require(['@/pages/Order'], resolve);
 
 Vue.use(Router)
 
@@ -29,10 +31,23 @@ export default new Router({
 			component: Shoppingcar
 		},
 		{
+			path: '/mine',
+			name: '我的',
+			iconCls: 'shopping-cart.svg',
+			menuShow: true,
+			component: Mine
+		},
+		{
 			path: '/productdetail',
 			name: '商品详情',
 			menuShow: false,
 			component: ProductDetail
+		},
+		{
+			path: '/order',
+			name: '订单',
+			menuShow: false,
+			component: Order
 		},
   	]
 })
