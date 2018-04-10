@@ -1,17 +1,12 @@
 <template>
 	<section style="padding-bottom: 50px;" class="productDetail">
-		<div class="backIcon"   @click="backList">
-			<!-- <icon name="angle-left" scale="2"></icon> -->
-			返回
-		</div>
-		<div class="searchIcon"  @click="searchIcon">
-			<!-- <icon name="search" scale="2"></icon> -->
-			搜索
+		<div class="backIcon"   @click="backList" style="background:f1f1f1;">
+			<i class="iconfont icon-fanhui" style="color:#fff;font-size:24px;"></i>
 		</div>
 		<div class="swiper-container">
-			<div class="swiper-wrapper" style="background: #fff;">
-				<div class="swiper-slide" v-for="image in imgs"><img v-lazy="image"/></div>
-			</div>
+			<mt-swipe :auto="3000">
+			  <mt-swipe-item v-for="(item,index) in imgs" :key="index"><img v-lazy="item"/></mt-swipe-item>
+			</mt-swipe>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
 		</div>
@@ -36,6 +31,7 @@
 				<div style="display: inline-block;line-height: 50px;" >购物车</div>
 				<div style="display: inline-block;height: 50px;vertical-align: middle;">
 					<!-- <icon name="shopping-cart" scale="1.5" style="float: left;margin-top: 10px;"></icon> -->
+					<i class="iconfont icon-gouwuche" style="font-size:24px;float: left;margin-top: 10px;"></i>
 				</div>
 			</div>
 			<div style="width: 50%;float: left;    color: #fff;background-color: #ab0923;height: 50px;line-height: 50px;"  @click="showOp">加入购物车</div>
@@ -46,7 +42,7 @@
 					<img :src="productInfo.productPhoto" alt="" />
 					<div class="mb-name">{{productInfo.productName}}</div>
 					<div><span style="font-size: 14px;color: #f40;">￥:</span><span style="font-size: 16px;color: #f40;">{{productInfo.memberPrice}}</span></div>
-					<div  class="mb-close"  @click="megnban=false">关闭</div>
+					<div  class="mb-close"  ><i class="iconfont icon-guanbi" style="font-size: 24px;" @click="megnban=false"></i></div>
 				</div>
 				<div class="mb-account">
 					<div style="display: inline-block;float: left;height: 35px;line-height: 35px;"><!-- <span>库存：</span><span>{{productInfo.StockNumber}}</span> --></div>
@@ -55,7 +51,9 @@
 						</div>
 				</div>
 				<div class="operate">
-					<mt-button size="small" type="danger" @click="addShoppingCar(false)">立即购买</mt-button>
+					<router-link to="/confirmOrder">
+						<mt-button size="small" type="danger">立即购买</mt-button>
+					</router-link>
 					<mt-button  size="small" type="danger" @click="addShoppingCar(true)">加入购物车</mt-button>
 				</div>
 			</div>
@@ -64,7 +62,7 @@
 </template>
 
 <script>
-	import { Toast } from 'mint-ui';
+	import { Toast ,Swipe, SwipeItem} from 'mint-ui';
 	// import { getProductUsedInfo ,ipAddr,batchAddCar} from "../js/api"
 	// import { ls,ss} from "../js/LStorage"
 	export default {
@@ -95,7 +93,7 @@
 		"saleOnYp": 0,
 		"shelfState": 6,
 		"spuDisplay": 0,
-		"imgs": "[\"http://www.taiibao.com/upload/f0e/79e/aa57d0df9a40438784e868a86b_54882_800x800.jpg\",\"http://www.taiibao.com/upload/202/d09/c431861d7563dc68d9ae0f799c_43529_800x800.jpg\"]",
+		"imgs": "[http://www.taiibao.com/upload/f0e/79e/aa57d0df9a40438784e868a86b_54882_800x800.jpg,http://www.taiibao.com/upload/202/d09/c431861d7563dc68d9ae0f799c_43529_800x800.jpg]",
 		"productPhoto": "http://www.taiibao.com/upload/f0e/79e/aa57d0df9a40438784e868a86b_54882_800x800.jpg",
 		"memberPrice": 120.00,
 		"cashOnDelivery": 1,
@@ -105,7 +103,7 @@
 		"shortName": "",
 		"categoryId": 11
 				},
-				imgs: ["http://www.taiibao.com/upload/f0e/79e/aa57d0df9a40438784e868a86b_54882_800x800.jpg"],
+				imgs: ["http://www.taiibao.com/upload/f0e/79e/aa57d0df9a40438784e868a86b_54882_800x800.jpg","http://www.taiibao.com/upload/202/d09/c431861d7563dc68d9ae0f799c_43529_800x800.jpg"],
 				megnban:false,
 				addNum:1,
 				// ip_Addr:ipAddr,
@@ -321,6 +319,7 @@
 			// 	}
 				
 			// }
+			this.megnban=true;
 			
 		},
 		},
@@ -394,9 +393,13 @@
 	}*/
 	.swiper-container {
 		width: 100%;
-		height: 100%;
+		height: 400px;
+		text-align: center;
 	}
-	
+	.swiper-container img{
+		width:100%;
+		height:100%;
+	}
 	.swiper-slide {
 		text-align: center;
 		font-size: 18px;
@@ -443,7 +446,9 @@
 		text-align: center;
 		line-height: 40px;
 		border-radius: 20px;
-		background: rgba(199, 0, 10,0.6);
+		/*background: rgba(199, 0, 10,0.6);*/
+		background: #ccc;
+		opacity: 0.8;
 		position: fixed;
 		top: 10px;
 		left: 10px;
@@ -536,7 +541,7 @@
 		vertical-align: middle;
 		text-align: center;
 		border-radius: 10px;
-		background-color: #999;
+		/*background-color: #999;*/
 	}
 	.mb-close svg{
 		color: #fff;

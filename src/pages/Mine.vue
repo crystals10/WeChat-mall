@@ -1,12 +1,14 @@
 <template>
 	<section class="section-con">
+		
 		<div>
 			<div class="myU-head">
 				<div class="photo">
-					<div style="padding-top:30px;color:white;"><span>张三</span></div>
+					<img src="../assets/images/touxiang.jpg" height="300" width="300"/>
+					<!-- <div style="padding-top:30px;color:white;"><span>张三</span></div> -->
 				</div>
 				<div class="phone">17826804660</div>
-				<div class="jifen">积分￥10&nbsp;&nbsp;&nbsp;&nbsp;优惠券0</div>
+				<div class="jifen">积分￥10</div>
 			</div>
 			<div class="orderPanel">
 			<div style="background: #fff;border-radius: 3px;">
@@ -15,65 +17,38 @@
 </mt-cell>
 <div class="allOrder">
 	<div @click="clickOrder(0)">
-		<icon name="hourglass-start"  scale="2"></icon>
-		<p>待配送</p>
+		<i class="iconfont icon-dingdanzhuangtaidengdai" style="font-size:30px;"></i>
+		<p>代付款</p>
 	</div>
 	<div @click="clickOrder(1)">
-		<icon name="truck"  scale="2"></icon>
-		<p>配送中</p>
+		<i class="iconfont icon-distribution" style="font-size:30px;"></i>
+		<p>待发货</p>
 	</div>
 	<div @click="clickOrder(2)">
-		<icon name="creative-commons"  scale="2"></icon>
-		<p>已送达</p>
+		<i class="iconfont icon-daodashijian" style="font-size:30px;"></i>
+		<p>待收货</p>
 	</div>
 	<div @click="clickOrder(3)">
-		<icon name="history"  scale="2"></icon>
-		<p>退换货</p>
+		<i class="iconfont icon-icon5" style="font-size:30px;"></i>
+		<p>已完成</p>
 	</div>
 </div>
 </div>
 <div class="box-panel">
 	<div class="allOrder"  style="border-bottom: 1px solid #eee;">
 			<div  @click="skip('myData')">
-		<icon name="user-o"  scale="2"></icon>
+		<i class="iconfont icon-gerenziliao" style="font-size:30px;"></i>
 		<p>个人资料</p>
 	</div>
-	<div @click="skip('wallet')">
-		<icon name="suitcase"  scale="2"></icon>
-		<p>我的钱包</p>
-	</div>
-	<!--<div @click="skip('myZone')">
-		<icon name="tags"  scale="2"></icon>
-		<p>我的专区</p>
-	</div>-->
-	<!--<div @click="skip('exchange')">
-		<icon name="exchange"  scale="2"></icon>
-		<p>兑换</p>
-	</div>-->
 	<div @click="skip('addressManage')">
-		<icon name="map-marker"  scale="2"></icon>
+		<i class="iconfont icon-dizhiguanli" style="font-size:30px;"></i>
 		<p>地址管理</p>
 	</div>
 	<div @click="skip('myShare')">
-		<icon name="map-marker"  scale="2"></icon>
+		<i class="iconfont icon-fenxiang" style="font-size:30px;"></i>
 		<p>我的分享</p>
 	</div>
 </div>
-<!--<div class="allOrder">-->
-
-	<!--<div>
-		<icon name="share-alt"  scale="2"></icon>
-		<p>分享有礼</p>
-	</div>-->
-	<!--<div  @click="skip('suggestion')">
-		<icon name="thumbs-o-up"  scale="2"></icon>
-		<p>意见反馈</p>
-	</div>-->
-	<!--<div @click="skip('help')">
-		<icon name="question-circle-o"  scale="2"></icon>
-		<p>帮助中心</p>
-	</div>-->
-<!--</div>-->
 </div>
 <div class="connect">客服电话：111-111-1111</div>
 <mt-button type="danger" size="large" @click="clearData">清除缓存</mt-button>

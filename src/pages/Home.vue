@@ -21,15 +21,14 @@
 
 		<div class="container">
 			<!--轮播-->
-			<div class="swiper-container" v-show="recommendContent">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></div>
-					<!-- <div class="swiper-slide"><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></div>
-					<div class="swiper-slide"><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></div> -->
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination"></div>
+			<div class="swiper-container">
+				<mt-swipe :auto="3000">
+				  <mt-swipe-item><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></mt-swipe-item>
+				  <mt-swipe-item><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></mt-swipe-item>
+				  <mt-swipe-item><img src="http://www.taiibao.com/upload/f22/cfc/99c8a57a3f95a5997acc825bca_179036_750x375.jpg" alt="" /></mt-swipe-item>
+				</mt-swipe>
 			</div>
+				
 
 			<!--商品列表推荐-->
 			<div class="contentList" v-show="recommendContent">
@@ -43,7 +42,7 @@
 						<img src="http://www.taiibao.com/upload/7d8/24c/6e6d4de8964ad594c6c7fb21ab_49799_740x240.jpg" alt="">
 					</router-link>
 					<div class="items">
-						<router-link tag="div" class="item" v-for="(items,index) in item.productInfo" :key="index" :to="'/productdetail?Id='+items.Id">
+						<router-link tag="div" class="item" v-for="(items,index) in item.productInfo" :key="index" to="/productdetail">
 							<div class="productImg">
 								<img v-lazy="items.productPhoto" alt="" />
 							</div>
@@ -105,11 +104,11 @@
 <script>
 	import Tabbar from '@/components/Tabbar'
 	// import { homepageList, ipAddr, getCategoryList, getProductListBysearch ,queryProductList,getLocation} from "../js/api"
-	import { Lazyload, Indicator, Toast } from 'mint-ui'
+	import { Lazyload, Indicator, Toast, Swipe, SwipeItem} from 'mint-ui'
 	export default {
 		name:"Home",
 		components: {
-			'tabbar-select': Tabbar
+			'tabbar-select': Tabbar,
 		},
 		data() {
 			return {
@@ -201,9 +200,9 @@
 				// ss.removeItem("hisCache");
 				this.$router.push({
 					path:"/home",
-					query:{
-						categoryId:id
-					}
+					// query:{
+					// 	categoryId:id
+					// }
 				});
 				this.classActive = id;
 				// console.log(id);
@@ -301,9 +300,9 @@
 				// }));
 				// console.log(index);
 				this.$router.push({
-					query: {
-						Id: index
-					},
+					// query: {
+					// 	Id: index
+					// },
 					path: '/productdetail'
 				});
 			},
@@ -769,9 +768,12 @@
 	
 	.swiper-container {
 		width: 100%;
-		height: 100%;
+		height: 150px;
 	}
-	
+	.swiper-container img{
+		width:100%;
+		height:100%;
+	}
 	.swiper-slide {
 		text-align: center;
 		font-size: 18px;

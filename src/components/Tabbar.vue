@@ -3,7 +3,8 @@
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item  v-for="(item,index) in $router.options.routes" v-if="item.menuShow==true" :id="item.path" :key="index">
         	<div>
-              <img :src="'static/img/'+item.iconCls" alt="" style="width: 32px;"/>
+              <!-- <img :src="'static/img/'+item.iconCls" alt="" style="width: 32px;"/> -->
+              <i :class="item.iconCls" style="font-size:28px;"></i>
           </div>
         	<div>
             {{item.name}}

@@ -5,27 +5,32 @@
 				<mt-button icon="back"></mt-button>
 			</router-link>
 		</mt-header>-->
-		<div class="container">
+		<mt-header title="全部订单" fixed style="height: 45px;background: #c7000a;font-size: 18px;    font-weight: 400;">
+			<router-link to="/mine" slot="left">
+				<mt-button icon="back"></mt-button>
+			</router-link>
+		</mt-header>
+		<div class="container" style="margin-top:45px;">
 			<div class="allOrder">
 				<div :class="{ 'clickred': -1 == selectbg }" @click="selOrder(-1)">
-					<!-- <icon name="list-alt" style="color: inherit;" scale="2"></icon> -->
+					<i class="iconfont icon-weibiaoti2fuzhi07" style="font-size:30px;"></i>
 					<p style="color: inherit;">全部</p>
 				</div>
 				<div :class="{ 'clickred': 0 == selectbg }" @click="selOrder(0)">
-					<!-- <icon name="hourglass-start" scale="2"></icon> -->
-					<p>待配送</p>
+					<i class="iconfont icon-dingdanzhuangtaidengdai" style="font-size:30px;"></i>
+					<p>待付款</p>
 				</div>
 				<div :class="{ 'clickred': 1 == selectbg }" @click="selOrder(1)">
-					<!-- <icon name="truck" scale="2"></icon> -->
-					<p>配送中</p>
+					<i class="iconfont icon-distribution" style="font-size:30px;"></i>
+					<p>待发货</p>
 				</div>
 				<div :class="{ 'clickred': 2 == selectbg }" @click="selOrder(2)">
-					<!-- <icon name="creative-commons" scale="2"></icon> -->
-					<p>已送达</p>
+					<i class="iconfont icon-daodashijian" style="font-size:30px;"></i>
+					<p>待收货</p>
 				</div>
 				<div :class="{ 'clickred': 3 == selectbg }" @click="selOrder(3)">
-					<!-- <icon name="history" scale="2"></icon> -->
-					<p>退换货</p>
+					<i class="iconfont icon-icon5" style="font-size:30px;"></i>
+					<p>已完成</p>
 				</div>
 			</div>
 				<!--<div class="goodsList" v-for="item in orderInfoList">
@@ -46,7 +51,7 @@
 		
 	</div>-->
 				<!--内容区域-->
-				<div style="height: 100vh;overflow-y: scroll;-webkit-overflow-scrolling : touch;position: fixed;top: 0;left: 0;box-sizing: border-box;width: 100%;z-index: -1;padding: 80px 0 0;background:#cccc">
+				<div style="height: 100vh;overflow-y: scroll;-webkit-overflow-scrolling : touch;position: fixed;top: 0;left: 0;box-sizing: border-box;width: 100%;z-index: -1;padding: 125px 0 0;background:#f1f1f1">
 					<ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
 						<li v-for="(item,index) in orderInfoList" :key="index" style="margin-bottom: 10px;background: #fff;padding: 0 10px;" @click="skipOrderDetail(item.orderinfoId)">
 							<div class="panel-header">
@@ -363,7 +368,7 @@
 		border-radius: 3px;
 		position: fixed;
 		width: 100%;
-		top: 0;
+		top: 45;
 		left: 0;
 		z-index: 1;
 	}

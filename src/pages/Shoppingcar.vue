@@ -4,8 +4,7 @@
 		<mt-header title="购物车" fixed style="height: 45px;    background: #c7000a;font-size: 18px;">
 			<span slot="right">
 				<mt-button  @click="delect1">
-					删除
-					<!-- <icon  name="trash-o" scale="1.5"></icon> -->
+					<i class="iconfont icon-shanchu" style="font-size:24px;"></i>
 				</mt-button>
 			</span>
 		</mt-header>
@@ -40,7 +39,10 @@
 
 			<el-checkbox style="line-height:normal;" v-model="checkAll" @change="allSelect()"></el-checkbox><span style="margin:0 10px 0 5px;">全选</span>
 			<span style="    color: #ab0923;">合计：{{allCount|formatMoney}}元</span>
-			<mt-button type="danger" size="small" style="float: right;margin: 8px;" @click="doOrderInfo" :disabled="doOrderAbled">结算({{allNum}})</mt-button>
+			<router-link to="/confirmOrder">
+				<mt-button type="danger" size="small" style="float: right;margin: 8px;" @click="doOrderInfo" :disabled="doOrderAbled">结算({{allNum}})</mt-button>
+			</router-link>
+			
 		</div>
 		<tabbar-select></tabbar-select>
 		</div>
